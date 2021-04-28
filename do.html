@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul,
+        li {
+            list-style: none;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+        }
+
+        .dele {
+            text-decoration: line-through;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <div>
+            <h3>添加任务</h3>
+            <input type="text" name="" id="" @keyup.enter='add'>
+        </div>
+
+        <p>一共{{num}}个任务未完成</p>
+        <button @click='allFn'>所有任务</button>
+        <button @click='noFn'>未完成</button>
+        <button @click='okFn'>已完成</button>
+
+
+        <div>
+            <h3>任务列表</h3>
+            <p v-if='!todoList.length'>还没有添加任务</p>
+            <ul>
+                <li :class="{ 'dele': item.state }" v-for="(item,index) in todoList"
+                    v-if="flag.includes(item.state)?true:false">
+                    <input @click='changeState(item)' type="radio" name="" id="" :checked=item.state>
+                    <p>{{item.name}}</p>
+                    <button @click='remove(index)'>删除</button>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./do.js"></script>
+</body>
+
+</html>
