@@ -34,7 +34,8 @@ new Vue({
     },
     computed: {
         num() {
-            this.todoList.forEach((val, index) => {
+            this.i=0
+            this.todoList.forEach((val) => {
                 if (val.state == false) {
                     this.i++
                     console.log(this.i)
